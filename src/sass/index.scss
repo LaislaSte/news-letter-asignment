@@ -1,0 +1,128 @@
+$desktop: 1440px;
+$mobile: 375px;
+
+$bg-gradiente: hsl(4, 100%, 67%);
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+  background-color: #444a4d;
+  @media (max-width: 880px) {
+    padding: 0;
+  }
+
+  main {
+    @media (max-width: 880px) {
+      padding: 0;
+      width: 100%;
+      border-radius: 0;
+      height: 100dvh;
+    }
+
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 80vw;
+    border-radius: 20px;
+    background-color: #fff;
+    padding: 30px;
+    flex-wrap: wrap-reverse;
+
+    section {
+      flex: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 20px;
+
+      @media (max-width: 1090px) {
+        flex: 1;
+      }
+      @media (max-width: 880px) {
+        width: 100%;
+        flex: none;
+        font-size: 15px;
+      }
+
+      h1 {
+        font-size: 4rem;
+      }
+      ul {
+        list-style: none;
+
+        li {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          margin-bottom: 10px;
+        }
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+
+        input {
+          background: none;
+          border: 1px solid #444a4da4;
+          height: 60px;
+          font-size: 20px;
+          border-radius: 10px;
+          padding: 0 10px;
+          margin-bottom: 10px;
+        }
+        button {
+          background-color: #181b1c;
+          height: 60px;
+          font-size: 20px;
+          border-radius: 10px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: #fff;
+          cursor: pointer;
+
+          :hover{
+            background-color: $bg-gradiente;
+          }
+        }
+      }
+    }
+
+    picture {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img {
+        border-radius: 10px;
+        width: 100%;
+        object-fit: cover;
+      }
+
+      @media (max-width: 880px) {
+        flex: none;
+        width: 100%;
+        // height: 40vh;
+        img {
+        //   height: 100%;
+          // object-fit: contain;
+        }
+      }
+    }
+  }
+}
