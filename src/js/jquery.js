@@ -1,14 +1,33 @@
+$('#input-email').on('change', (e) => {
+  valideEmail(e.target.value);
+});
 
-// const border = { 'border': '1px solid #000'}
-// $('main').css(border);
-// $('main section').css({'border': '1px solid #000', 'background-color': 'aqua'})
+document.getElementById('submitBtn').addEventListener('click', function () {
+  const email = $('#input-email').val();
 
+  if (valideEmail(email)) {
+    $('.container-card').css('display', 'flex');
+    $('#client-email').html(email);
+    document.getElementById('input-email').value = '';
+    $('#input-email').toggleClass('input-error');
+    $('form').find('span').css('display', 'none');
+  }
+});
 
+$('#closeCard').on('click', function () {
+  $('.container-card').css('display', 'none');
+});
 
-// $('button').on('click', () => {
-//     $('.container').toggleClass('container');
-// });
-// div.css({'display': "none", 'transition': '300 '})
-// $('.container').css('display', 'block');
-
-// // $('.container').on('click', e => $('button').fadeOut(1000)).on('click', e => $('button').fadeIn(1000) )
+function valideEmail(email) {
+  if (!email.match(/\w{2,}@[a-zA-Z]{2,}\.[a-zA-Z]{2,}/) || email == '') {
+    $('#input-email').addClass('input-error');
+    $('form').find('span').css('display', 'block');
+    $('form').find('button').prop('disabled', true);
+    return false;
+  } else {
+    $('#input-email').toggleClass('input-error');
+    $('form').find('span').css('display', 'none');
+    $('form').find('button').prop('disabled', false);
+    return true;
+  }
+}
