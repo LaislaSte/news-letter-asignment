@@ -31,7 +31,7 @@ const minHTML = () => {
 
 const changeCSS = () => {
   return gulp
-    .src('src/sass/**/*.scss')
+    .src('src/sass/style.scss')
     .pipe(gulpsass())
     .pipe(uglifycss())
     .pipe(concat('style.min.css'))

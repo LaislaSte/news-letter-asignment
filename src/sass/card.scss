@@ -1,0 +1,42 @@
+
+.container-card {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    position: fixed;
+    background: #22457375;
+    height: 100vh;
+    width: 100%;
+    top: 0;
+    left: 0;
+    backdrop-filter: blur(15px);
+  
+    main {
+      section {
+        font-size: 1.4rem;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+  
+        h1 {
+          color: $grey;
+        }
+  
+        img {
+          width: 10%;
+        }
+      }
+  
+      background-color: #fff;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      max-width: 600px;
+      width: 100%;
+      max-height: 100vh;
+      height: max-content;
+      margin: 1rem;
+      overflow-y: auto;
+    }
+  }
+  

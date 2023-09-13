@@ -1,33 +1,52 @@
-$('#input-email').on('change', (e) => {
-  valideEmail(e.target.value);
+const submitBtn = $('#submitBtn');
+const emailInput = $('#input-email');
+const closeBtnCard = $('#closeCard');
+const errorSpan = $('form').find('span');
+const containerCard = $('.container-card');
+
+function validEmail(email) {
+  return email && email.match(/\w{2,}@[a-zA-Z]{2,}\.[a-zA-Z]{2,}/);
+}
+
+emailInput.on('change', function (e) {
+  // e.preventDefault();
+  if (e.target.value) {
+    if (!validEmail(e.target.value)) {
+      emailInput.addClass('input-error');
+      errorSpan.css('display', 'block');
+      submitBtn.prop('disabled', true);
+      submitBtn.addClass('disable');
+    }
+
+    if (validEmail(e.target.value)) {
+      errorSpan.css('display', 'none');
+      emailInput.removeClass('input-error');
+      submitBtn.prop('disabled', false);
+      submitBtn.removeClass('disable');
+    }
+  }
 });
 
-document.getElementById('submitBtn').addEventListener('click', function () {
-  const email = $('#input-email').val();
-
-  if (valideEmail(email)) {
-    $('.container-card').css('display', 'flex');
-    $('#client-email').html(email);
-    document.getElementById('input-email').value = '';
-    $('#input-email').toggleClass('input-error');
-    $('form').find('span').css('display', 'none');
-  }
+submitBtn.on('click', function () {
+  toggleContainer();
+  $('#client-email').html(emailInput.val());
 });
 
 $('#closeCard').on('click', function () {
-  $('.container-card').css('display', 'none');
+  toggleContainer();
+  resetAll();
 });
 
-function valideEmail(email) {
-  if (!email.match(/\w{2,}@[a-zA-Z]{2,}\.[a-zA-Z]{2,}/) || email == '') {
-    $('#input-email').addClass('input-error');
-    $('form').find('span').css('display', 'block');
-    $('form').find('button').prop('disabled', true);
-    return false;
-  } else {
-    $('#input-email').toggleClass('input-error');
-    $('form').find('span').css('display', 'none');
-    $('form').find('button').prop('disabled', false);
-    return true;
-  }
-}
+const toggleContainer = () => {
+  containerCard.css('display') == 'none'
+    ? containerCard.css('display', 'flex')
+    : containerCard.css('display', 'none');
+};
+
+const resetAll = () => {
+  emailInput.val('');
+  emailInput.removeClass('input-error');
+  errorSpan.css('display', 'none');
+  submitBtn.prop('disabled', true);
+  submitBtn.addClass('disable');
+};

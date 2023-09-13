@@ -1,22 +1,4 @@
-$desktop: 1440px;
-$tablet: 550px;
-$mobile: 375px;
 
-$tomato: hsl(4, 100%, 67%);
-$trans-tomato: hsla(4, 100%, 67%, 0.24);
-$light-tomato: hsl(15, 100%, 67%);
-$bg-gradiente: linear-gradient(
-  217deg,
-  hsl(4, 100%, 67%),
-  hsl(15, 100%, 67%) 70.71%
-);
-
-$dark-slate-grey: hsl(234, 29%, 20%);
-$charcoal-grey: hsl(235, 18%, 26%);
-$grey: hsl(231, 7%, 60%);
-$white: hsl(0, 0%, 100%);
-
-$paragraph: 16px;
 
 * {
   box-sizing: border-box;
@@ -27,6 +9,7 @@ $paragraph: 16px;
 }
 
 body {
+
   a,
   button {
     background-color: $dark-slate-grey;
@@ -44,180 +27,15 @@ body {
     transition: 1s ease;
     transform: scaleY(0.6rem);
     // box-shadow: ;
-    &:hover {
+    &:not(.disable):hover {
       transform: scaleY(0.6rem);
       background: $bg-gradiente;
+    }
+    &:disabled{
+      background-color: #8c8c8ca3;
     }
   }
   p {
     font-size: $paragraph;
-  }
-}
-
-.container {
-  padding: 40px;
-  display: flex;
-  justify-content: center;
-  background-color: $charcoal-grey;
-
-  main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    width: 80vw;
-    border-radius: 20px;
-    background-color: #fff;
-    padding: 30px;
-    flex-wrap: wrap-reverse;
-
-    section {
-      flex: 2;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      gap: 20px;
-      padding: 20px;
-
-      @media (max-width: 1090px) {
-        flex: 1;
-      }
-
-      h1 {
-        font-size: 4rem;
-      }
-      ul {
-        list-style: none;
-
-        li {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          margin-bottom: 10px;
-        }
-      }
-
-      form {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        gap: 10px;
-
-        .container-label-input {
-          display: flex;
-          justify-content: space-between;
-
-          span {
-            color: $tomato;
-            display: none;
-          }
-        }
-
-        input {
-          background: none;
-          border: 1px solid #444a4da4;
-          height: 60px;
-          font-size: 20px;
-          border-radius: 10px;
-          padding: 0 10px;
-          margin-bottom: 10px;
-        }
-
-        .input-error {
-          border: 1px solid $tomato;
-          background-color: $trans-tomato;
-          color: $tomato;
-          &::placeholder {
-            color: $tomato;
-          }
-          &:focus-visible {
-            outline: 1px solid $tomato;
-          }
-        }
-      }
-    }
-
-    picture {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      img {
-        border-radius: 10px;
-        width: 100%;
-        object-fit: cover;
-      }
-    }
-  }
-
-  @media (max-width: $tablet) {
-    padding: 0;
-    main {
-      padding: 0;
-      width: 100%;
-      border-radius: 0;
-      height: 100dvh;
-
-      section {
-        width: 100%;
-        flex: none;
-        font-size: 15px;
-      }
-
-      picture {
-        flex: none;
-        width: 100%;
-        // height: 40vh;
-        img {
-          //   height: 100%;
-          // object-fit: contain;
-        }
-      }
-    }
-  }
-
-  @media (max-width: $mobile) {
-  }
-}
-
-.container-card {
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 2;
-  position: fixed;
-  background: #22457375;
-  height: 100vh;
-  width: 100%;
-  top: 0;
-  left: 0;
-  backdrop-filter: blur(15px);
-
-  main {
-    section {
-      font-size: 1.4rem;
-      display: flex;
-      flex-direction: column;
-      gap: 25px;
-
-      h1 {
-        color: $grey;
-      }
-
-      img {
-        width: 10%;
-      }
-    }
-
-    background-color: #fff;
-    border-radius: 1rem;
-    padding: 1.5rem;
-    max-width: 600px;
-    width: 100%;
-    max-height: 100vh;
-    height: max-content;
-    margin: 1rem;
-    overflow-y: auto;
   }
 }
